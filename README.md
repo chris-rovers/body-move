@@ -1,20 +1,17 @@
 # body-move README
 
-This is the README for your extension "body-move". After writing up a brief description, we recommend including the following sections.
+A simple extension that allows the user to enter an amount of minutes in which they would like to be reminded to get up, stretch, take a walk or exercise. Being a developer involves a lot of sitting and it's important to stand up and move!
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+User can enter a number value to set the amount of minutes to wait before triggering the reminder.
+A pop-up will briefly display the value back to them.
+A persistent message in the status bar will display what time the next reminder is due to trigger.
+The status bar message updates after the reminder fires and a new reminder is set.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Just the will to get up and move, when reminded.
 
 ## Extension Settings
 
@@ -29,37 +26,15 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+TBD
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
+Initial release of body-move VS Code extension.
 
-### 1.0.1
+  Planned features:
 
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+  - users can disable reminder via command
+  - users can update timer interval via command
