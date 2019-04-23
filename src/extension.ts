@@ -74,16 +74,16 @@ export function activate(context: vscode.ExtensionContext) {
 		if(date.getHours() % 24 > 12) {
 			date.setHours(date.getHours() - 12);
 			hours = date.getHours().toString();
-			timerStatus.text = "Your next body.move() reminder will be at " + hours + ":" + minutes + " PM.";
+			timerStatus.text = "body.move() at " + hours + ":" + minutes + " PM.";
 		}
 		// if midnight, change 00 to 12
 		else if(date.getHours() === 0) {
 			date.setHours(12);
 			hours = date.getHours().toString();
-			timerStatus.text = "Your next body.move() reminder will be at " + hours + ":" + minutes + " AM.";
+			timerStatus.text = "body.move() at " + hours + ":" + minutes + " AM.";
 		}
 		else {
-			timerStatus.text = "Your next body.move() reminder will be at " + hours + ":" + minutes + " AM.";
+			timerStatus.text = "body.move() at " + hours + ":" + minutes + " AM.";
 		}
 		
 		// print the message to status bar
