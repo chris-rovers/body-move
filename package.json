@@ -3,6 +3,9 @@
 	"displayName": "body.move()",
 	"description": "A simple extension to remind devs to stand, stretch and move.",
 	"version": "0.0.1",
+	"publisher": "chris-rovers",
+	"icon": "images/body-move-icon.jpg",
+	"repository": "https://github.com/chris-rovers/body-move",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
