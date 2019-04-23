@@ -1,7 +1,7 @@
 {
 	"name": "body-move",
 	"displayName": "body.move()",
-	"description": "A simple extension to prompt devs to stand, stretch and move.",
+	"description": "A simple extension to remind devs to stand, stretch and move.",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.33.0"
