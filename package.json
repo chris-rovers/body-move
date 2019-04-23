@@ -1,5 +1,5 @@
 {
-	"name": "move-reminder",
+	"name": "body-move",
 	"displayName": "body.move()",
 	"description": "A simple extension to prompt devs to stand, stretch and move.",
 	"version": "0.0.1",
