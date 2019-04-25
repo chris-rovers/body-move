@@ -1,13 +1,15 @@
-# body-move README
+# README
 
-A simple extension that allows the user to enter an amount of minutes in which they would like to be reminded to get up, stretch, take a walk or exercise. Being a developer involves a lot of sitting and it's important to stand up and move!
+A simple extension that reminds developers to get up, stretch, take a walk or exercise. Being a developer involves a lot of sitting and it's important to stand up and move!
 
 ## Features
 
-User can enter a number value to set the amount of minutes to wait before triggering the reminder.
-A pop-up will briefly display the value back to them.
+User can enter a number to set the amount of minutes to wait before triggering the reminder.
 A persistent message in the status bar will display what time the next reminder is due to trigger.
-The status bar message updates after the reminder fires and a new reminder is set.
+
+- Run setMoveTimer command via Command Pallette to adjust the reminder interval, at any time
+- Run clearMoveTimer command via Command Pallette to clear the reminder interval, at any time (disables reminders)
+- reminders can be reinstated with the setMoveTimer command
 
 ## Requirements
 
@@ -15,14 +17,11 @@ Just the will to get up and move, when reminded.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+* command: extension.body-move
+* command: body-move.setMoveTimer
+* command: body-move.clearMoveTimer
 
 ## Known Issues
 
@@ -30,12 +29,18 @@ TBD
 
 ## Release Notes
 
+### 0.1.2
+04-25-2019
+- Added setMoveTimer command to adjust the reminder interval
+- Added clearMoveTimer command to clear the reminder interval, thus disabling reminders
+
 ### 0.0.2
-Shortened the message in the status bar.
+04-23-2019
+- Shortened the message in the status bar.
 
 ### 0.0.1
-
-Initial release of body-move VS Code extension.
+04-23-2019
+- Initial release of body-move VS Code extension.
 
   Planned features:
 

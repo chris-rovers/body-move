@@ -1,10 +1,10 @@
 {
 	"name": "body-move",
-	"displayName": "body.move()",
+	"displayName": "Body.Move()",
 	"description": "A simple extension to remind devs to stand, stretch and move.",
 	"version": "0.0.2",
 	"publisher": "chris-rovers",
-	"icon": "images/body-move-icon.jpg",
+	"icon": "images/body-move-icon.png",
 	"repository": "https://github.com/chris-rovers/body-move",
 	"engines": {
 		"vscode": "^1.33.0"
@@ -21,6 +21,14 @@
 			{
 				"command": "extension.body-move",
 				"title": "body-move"
+			},
+			{
+				"command": "body-move.setMoveTimer",
+				"title": "Set Move Timer"
+			},
+			{
+				"command": "body-move.clearMoveTimer",
+				"title": "Clear Move Timer"
 			}
 		]
 	},
