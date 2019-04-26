@@ -7,33 +7,48 @@ let timerStatus: vscode.StatusBarItem;
 export function activate(context: vscode.ExtensionContext) {
 	console.log("Your \"body.move()\" extension is now active.");
 	let waitTime = 0; // to be set by user via SetReminderTime() function
+	let reminderTime = ""; // the actual number entered by the user. Used by CheckReminderTime()
 	let timer: any; // a timeout to be set by InitializeReminder()
 	let messages = ["Time to get up and move!", "Go take a walk!", "You should stand up and strech!", "Go get some fresh air!",
 									"Go do some exercise!"];
-
-	// status bar
-	timerStatus = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-	timerStatus.color = '#fff';
-	context.subscriptions.push(timerStatus);
 
 	//user commands to be run from Command Pallette
 	const setMoveTimer = 'body-move.setMoveTimer';
 	context.subscriptions.push(vscode.commands.registerCommand(setMoveTimer, SetReminderTime));
 	const clearMoveTimer = 'body-move.clearMoveTimer';
-	context.subscriptions.push(vscode.commands.registerCommand(clearMoveTimer, ClearReminder));
+	context.subscriptions.push(vscode.commands.registerCommand(clearMoveTimer, ClearReminderTime));
+	const checkMoveTimer = 'body-move.checkMoveTimer';
+	context.subscriptions.push(vscode.commands.registerCommand(checkMoveTimer, CheckReminderTime));
+	const hideMoveTimer = 'body-move.hideMoveTimer';
+	context.subscriptions.push(vscode.commands.registerCommand(hideMoveTimer, HideStatusBar));
+	const showMoveTimer = 'body-move.showMoveTimer';
+	context.subscriptions.push(vscode.commands.registerCommand(showMoveTimer, ShowStatusBar));
 
-	// ask the user to enter how many minutes to delay the reminder
+	// status bar
+	timerStatus = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+	timerStatus.color = '#fff';
+	timerStatus.command = setMoveTimer;
+	timerStatus.tooltip = "Click here to adjust body.move() timer.";
+	context.subscriptions.push(timerStatus);
+
+	// ask the user to enter minutes for reminder interval
 	function SetReminderTime() {
 		vscode.window.showInputBox({placeHolder:
-			"How many minutes from now would you like to be reminded to get up and move?"}).then(function (answer) { 
+			"Set the minute interval (up to 180 minutes) that you'd like to be reminded to move."}).then(function (answer) { 
 			if(answer){ 
 				let timeEntry = parseInt(answer);
 				// validate the user's input
-				if(timeEntry > 0) {
-					vscode.window.showInformationMessage("body.move() reminder set for " + timeEntry + " minute(s).");
+				if(timeEntry > 0 && timeEntry <= 180) {
+					vscode.window.showInformationMessage("body.move() reminder set for " + timeEntry + " minute intervals.");
+					reminderTime = "body.move() reminder set for " + timeEntry + " minute intervals.";
 					waitTime = timeEntry * 60000;
 					InitializeReminder();
+					ShowStatusBar();
 				} // if
+				else if(timeEntry > 180) {
+					vscode.window.showErrorMessage("Value should not exceed 180 minutes (3 hours).");
+					SetReminderTime();
+				} // else if
 				else {
 					vscode.window.showErrorMessage("Please enter a valid integer, greater than zero.");
 					SetReminderTime();
@@ -44,7 +59,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	SetReminderTime();
 
-	function ClearReminder() {
+	function ClearReminderTime() {
 		clearTimeout(timer);
 		vscode.window.showInformationMessage("body.move() reminder cleared.");
 		timerStatus.text = "body.move() not set.";
@@ -58,6 +73,18 @@ export function activate(context: vscode.ExtensionContext) {
 		timer = setTimeout(ShowReminder, intervalTime);		
 		UpdateStatusBar();
 	} // InitializeReminder()
+
+	function CheckReminderTime() {
+		vscode.window.showInformationMessage(reminderTime);
+	} // CheckReminderTime()
+
+	function HideStatusBar() {
+			timerStatus.hide();
+	} // HideStatusBar()
+
+	function ShowStatusBar() {
+		timerStatus.show();
+	} // ShowStatusBar()
 
 	// fire off the reminder via Information Message
 	function ShowReminder() {
@@ -74,19 +101,20 @@ export function activate(context: vscode.ExtensionContext) {
 		let minutes = "";
 		let meridiem = "";
 		let date = new Date();
-		date.setTime(date.getTime() + waitTime); // set the reminder time to be displayed in status bar
+		date.setTime(date.getTime() + waitTime); // set the reminder time that will be displayed in status bar
 		hours = date.getHours().toString();
+		console.log("Hours: " + hours);
 		
 		// change minutes from single-digits to double-digits
 		if(date.getMinutes() < 10) {
-			minutes = "0" + date.getMinutes();
+			minutes = "0" + date.getMinutes().toString();
 		}
 		else {
 			minutes = date.getMinutes().toString();
 		}
 
 		// determine AM or PM
-		if(date.getHours() % 24 > 12) {
+		if(date.getHours() % 24 >= 12) {
 			date.setHours(date.getHours() - 12);
 			hours = date.getHours().toString();
 			meridiem = " PM.";
@@ -101,11 +129,9 @@ export function activate(context: vscode.ExtensionContext) {
 			hours = date.getHours().toString();
 		}
 		
-		// set the text that will show in the status bar
+		// update the text that will show in the status bar
 		timerStatus.text = "body.move() at " + hours + ":" + minutes + meridiem;
 				
-		// print the message to status bar
-		timerStatus.show();
 	} // UpdateStatusBar()
 
 } // activate()
