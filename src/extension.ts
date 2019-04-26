@@ -103,7 +103,6 @@ export function activate(context: vscode.ExtensionContext) {
 		let date = new Date();
 		date.setTime(date.getTime() + waitTime); // set the reminder time that will be displayed in status bar
 		hours = date.getHours().toString();
-		console.log("Hours: " + hours);
 		
 		// change minutes from single-digits to double-digits
 		if(date.getMinutes() < 10) {
