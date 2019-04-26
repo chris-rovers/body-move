@@ -29,6 +29,18 @@
 			{
 				"command": "body-move.clearMoveTimer",
 				"title": "Clear Move Timer"
+			},
+			{
+				"command": "body-move.checkMoveTimer",
+				"title": "Check Move Timer"
+			},
+			{
+				"command": "body-move.hideMoveTimer",
+				"title": "Hide Move Timer"
+			},
+			{
+				"command": "body-move.showMoveTimer",
+				"title": "Show Move Timer"
 			}
 		]
 	},
