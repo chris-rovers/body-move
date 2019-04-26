@@ -4,12 +4,15 @@ A simple extension that reminds developers to get up, stretch, take a walk or ex
 
 ## Features
 
-User can enter a number to set the amount of minutes to wait before triggering the reminder.
-A persistent message in the status bar will display what time the next reminder is due to trigger.
+User can enter a number to set the reminder interval in minutes.
+A persistent message in the status bar will display what time the next reminder will trigger.
 
-- Run setMoveTimer command via Command Pallette to adjust the reminder interval, at any time
-- Run clearMoveTimer command via Command Pallette to clear the reminder interval, at any time (disables reminders)
-- reminders can be reinstated with the setMoveTimer command
+- run **setMoveTimer** command via Command Pallette (or click the Status Bar) to adjust the reminder interval
+- run **checkMoveTimer** command via Command Pallette to check the reminder interval
+- run **clearMoveTimer** command via Command Pallette to clear the reminder interval (disables reminders)
+- run **hideMoveTimer** command via Command Pallette to hide body.move() status bar item
+- run **showMoveTimer** command via Command Pallette to show body.move() status bar item
+- reminders can be reinstated with the **setMoveTimer** command
 
 ## Requirements
 
@@ -22,14 +25,20 @@ This extension contributes the following settings:
 * command: extension.body-move
 * command: body-move.setMoveTimer
 * command: body-move.clearMoveTimer
-
-## Known Issues
-
-TBD
+* command: body-move.checkMoveTimer
+* command: body-move.hideMoveTimer
+* command: body-move.showMoveTimer
 
 ## Release Notes
 
-### 0.1.2
+### 0.1.1
+04-26-2019
+- Added checkMoveTimer command to view the reminder interval value
+- Added hideMoveTimer command to hide body.move() status bar item
+- Added showMoveTimer command to show body.move() status bar item
+- Limited reminder interval value to 180 minutes (3 hours)
+
+### 0.1.0
 04-25-2019
 - Added setMoveTimer command to adjust the reminder interval
 - Added clearMoveTimer command to clear the reminder interval, thus disabling reminders
