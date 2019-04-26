@@ -2,7 +2,7 @@
 
 All notable changes to the "body-move" extension will be documented in this file.
 
-### 0.1.1
+### 0.2.0
 04-26-2019
 - Added checkMoveTimer command to view the reminder interval value
 - Added hideMoveTimer command to hide body.move() status bar item
