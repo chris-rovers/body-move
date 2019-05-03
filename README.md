@@ -30,6 +30,10 @@ This extension contributes the following settings:
 * command: body-move.showMoveTimer
 
 ## Release Notes
+### 0.2.1
+05-03-2019
+- fixed some spelling
+- updated **CheckMoveTime** command to work when no reminder is set
 
 ### 0.2.0
 04-26-2019
