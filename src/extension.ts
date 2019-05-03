@@ -9,7 +9,7 @@ export function activate(context: vscode.ExtensionContext) {
 	let waitTime = 0; // to be set by user via SetReminderTime() function
 	let reminderTime = ""; // the actual number entered by the user. Used by CheckReminderTime()
 	let timer: any; // a timeout to be set by InitializeReminder()
-	let messages = ["Time to get up and move!", "Go take a walk!", "You should stand up and strech!", "Go get some fresh air!",
+	let messages = ["Time to get up and move!", "Go take a walk!", "You should stand up and stretch!", "Go get some fresh air!",
 									"Go do some exercise!"];
 
 	//user commands to be run from Command Pallette
@@ -75,7 +75,12 @@ export function activate(context: vscode.ExtensionContext) {
 	} // InitializeReminder()
 
 	function CheckReminderTime() {
-		vscode.window.showInformationMessage(reminderTime);
+		if(reminderTime === "") {
+			vscode.window.showInformationMessage("No reminder set. Use SetMoveTime command to set one.");	
+		}
+		else {
+			vscode.window.showInformationMessage(reminderTime);
+		}
 	} // CheckReminderTime()
 
 	function HideStatusBar() {
