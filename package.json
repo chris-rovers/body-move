@@ -2,7 +2,7 @@
 	"name": "body-move",
 	"displayName": "Body.Move()",
 	"description": "A simple extension to remind devs to stand, stretch and move.",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"publisher": "chris-rovers",
 	"icon": "images/body-move-icon.png",
 	"repository": "https://github.com/chris-rovers/body-move",
