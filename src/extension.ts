@@ -56,7 +56,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}); // .then(function())
 	} //SetReminderTime()
 
-	SetReminderTime();
+	// SetReminderTime();
 
 	// trim extra seconds and set reminder to fire at the top of the the minute
 	function InitializeReminder() {
@@ -137,6 +137,14 @@ export function activate(context: vscode.ExtensionContext) {
 		timerStatus.text = "body.move() at " + hours + ":" + minutes + meridiem;
 				
 	} // UpdateStatusBar()
+
+	function InitializeBodyMove() {
+		vscode.window.showInformationMessage("No reminder set. Use SetMoveTimer command to set one.");
+		timerStatus.text = "body.move() not set.";
+		timerStatus.show();
+	} // InitializeBodyMove()
+
+	InitializeBodyMove();
 
 } // activate()
 
